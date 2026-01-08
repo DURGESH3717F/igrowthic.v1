@@ -1,9 +1,8 @@
 
-const CACHE_NAME = 'igrowthic-cache-v1';
+const CACHE_NAME = 'igrowthic-cache-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
-  '/index.tsx',
   'https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js',
   'https://cdn.tailwindcss.com'
 ];
