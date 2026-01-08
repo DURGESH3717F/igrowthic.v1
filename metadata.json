@@ -1,0 +1,8 @@
+{
+  "name": "iGROWTHIC",
+  "description": "A high-end, interactive digital marketing agency portal featuring a platinum-themed glassmorphic UI, physics-based interactive brand elements, and integrated AI strategy assistance.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
