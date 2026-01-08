@@ -41,15 +41,15 @@ const StrategyModal: React.FC<StrategyModalProps> = ({ onClose }) => {
             </div>
             <h3 className="text-2xl font-heading font-black gold-text mb-4 uppercase flex items-center gap-2">
               <Sparkles size={20} className="text-yellow-500" />
-              Unlock Growth
+              Instant Growth
             </h3>
             <p className="text-sm text-gray-700 font-medium leading-relaxed mb-6">
-              Enter your business niche or industry and our AI strategist will give you 3 tips to scale.
+              Enter your industry. Our internal strategy engine will generate 3 actionable pillars to scale your brand.
             </p>
             <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
               <input 
                 type="text" 
-                placeholder="e.g. Luxury Real Estate"
+                placeholder="e.g. Luxury Real Estate or Tech SaaS"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="w-full h-12 px-5 bg-black/5 border border-black/5 rounded-xl text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
@@ -59,7 +59,7 @@ const StrategyModal: React.FC<StrategyModalProps> = ({ onClose }) => {
                 disabled={loading}
                 className="w-full py-4 bg-[#4a9eff] text-white font-bold rounded-xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
               >
-                {loading ? 'Analyzing...' : 'Get Strategy'}
+                {loading ? 'Processing...' : 'Generate Roadmap'}
                 {!loading && <ArrowRight size={18} />}
               </button>
             </form>
@@ -69,20 +69,27 @@ const StrategyModal: React.FC<StrategyModalProps> = ({ onClose }) => {
             <div className="mb-6 p-4 bg-blue-500 text-white rounded-2xl self-center">
               <Sparkles size={24} />
             </div>
-            <h3 className="text-xl font-heading font-black text-blue-500 mb-6 uppercase">Your Roadmap</h3>
+            <h3 className="text-xl font-heading font-black text-blue-500 mb-6 uppercase">Strategic Pillars</h3>
             <div className="flex-grow text-left text-sm text-gray-600 space-y-4 overflow-y-auto pr-2 scrollbar-hide">
               {response.split('\n').filter(line => line.trim()).map((line, i) => (
                 <div key={i} className="flex gap-3 items-start bg-blue-50/50 p-3 rounded-xl">
                   <span className="mt-1 w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0" />
-                  <p className="leading-relaxed font-medium">{line.replace(/^\s*[-*•]\s*/, '')}</p>
+                  <p className="leading-relaxed font-medium">{line}</p>
                 </div>
               ))}
             </div>
+            <button 
+              onClick={() => setResponse('')}
+              className="mt-6 py-4 border border-black/10 text-gray-800 font-bold rounded-xl text-xs tracking-widest uppercase hover:bg-black hover:text-white transition-all flex items-center justify-center gap-2"
+            >
+              Analyze New Niche
+            </button>
             <a 
               href="https://wa.me/919892299010" 
-              className="mt-6 py-4 bg-black text-white font-bold rounded-xl text-xs tracking-widest uppercase hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
+              target="_blank"
+              className="mt-3 py-4 bg-blue-500 text-white font-bold rounded-xl text-xs tracking-widest uppercase hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
             >
-              Scale This With Us
+              Implement with Experts
               <ArrowRight size={16} />
             </a>
           </div>
