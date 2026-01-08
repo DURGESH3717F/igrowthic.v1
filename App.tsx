@@ -9,54 +9,84 @@ import Pricing from './components/Pricing';
 import Contact from './components/Contact';
 import CustomCursor from './components/CustomCursor';
 import StrategyModal from './components/StrategyModal';
+import Blog from './components/Blog';
+import Studio from './components/Studio';
 
 const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const [currentView, setCurrentView] = useState<'home' | 'blog' | 'studio'>('home');
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowModal(true);
-    }, 4000);
+      if (currentView === 'home') {
+        setShowModal(true);
+      }
+    }, 30000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [currentView]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentView]);
 
   return (
     <div className="relative min-h-screen">
       {/* Background Blurs */}
-      <div className="fixed top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-400/5 rounded-full custom-blur animate-floating pointer-events-none -z-10" />
-      <div className="fixed bottom-[-10%] right-[-10%] w-[70vw] h-[70vw] bg-blue-600/5 rounded-full custom-blur animate-floating-reverse pointer-events-none -z-10" />
+      <div className="fixed top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-400/5 rounded-full custom-blur animate-floating pointer-events-none -z-10" aria-hidden="true" />
+      <div className="fixed bottom-[-10%] right-[-10%] w-[70vw] h-[70vw] bg-blue-600/5 rounded-full custom-blur animate-floating-reverse pointer-events-none -z-10" aria-hidden="true" />
 
       <CustomCursor />
       
-      <Navbar />
+      <Navbar setView={setCurrentView} currentView={currentView} />
       
-      <main>
-        <Hero />
-        <Services />
-        <PhysicsBrand />
-        <About />
-        <Pricing />
-        <Contact />
+      <main id="main-content" role="main" className="pt-10 md:pt-14">
+        {currentView === 'home' && (
+          <div className="animate-in fade-in duration-700">
+            <Hero />
+            <Services />
+            <PhysicsBrand />
+            <About />
+            <Pricing />
+            <Contact />
+          </div>
+        )}
+        
+        {currentView === 'blog' && (
+          <div className="animate-in slide-in-from-bottom-4 fade-in duration-700">
+            <Blog />
+          </div>
+        )}
+
+        {currentView === 'studio' && (
+          <div className="animate-in slide-in-from-bottom-4 fade-in duration-700">
+            <Studio />
+          </div>
+        )}
       </main>
 
-      <footer className="py-16 border-t border-black/5 bg-transparent">
+      <footer role="contentinfo" className="py-16 border-t border-black/5 bg-transparent">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div>
-            <h3 className="font-heading font-bold text-2xl">iGROWTHIC</h3>
-            <p className="text-gray-500">Digital Excellence & Future Branding.</p>
+          <div className="flex flex-col items-center md:items-start gap-4">
+            <img 
+              src="https://i.ibb.co/n8gFP3d2/2.png" 
+              alt="iGROWTHIC - Premier Digital Marketing Agency" 
+              className="h-16 w-auto object-contain"
+              loading="lazy" 
+            />
+            <p className="text-gray-500 font-medium">Digital Excellence & Viral Branding Specialists.</p>
           </div>
-          <div className="flex gap-8 font-semibold text-gray-700">
-            <a href="#" className="hover:text-blue-500 transition-colors">Twitter</a>
-            <a href="#" className="hover:text-blue-500 transition-colors">Instagram</a>
-            <a href="#" className="hover:text-blue-500 transition-colors">LinkedIn</a>
-          </div>
+          <nav className="flex gap-8 font-semibold text-gray-700" aria-label="Social Media">
+            <a href="https://twitter.com/igrowthic" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">Twitter</a>
+            <a href="https://instagram.com/igrowthic" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">Instagram</a>
+            <a href="https://linkedin.com/company/igrowthic" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">LinkedIn</a>
+          </nav>
         </div>
-        <div className="text-center mt-12 text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} iGROWTHIC. All rights reserved.
+        <div className="text-center mt-12 text-sm text-gray-400 uppercase tracking-widest font-black">
+          &copy; 2026 iGROWTHIC. THE GLOBAL BENCHMARK FOR GROWTH.
         </div>
       </footer>
 
-      {showModal && <StrategyModal onClose={() => setShowModal(false)} />}
+      {showModal && currentView === 'home' && <StrategyModal onClose={() => setShowModal(false)} />}
     </div>
   );
 };
