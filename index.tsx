@@ -5,23 +5,25 @@ import App from './App';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
+  console.error("Critical: Could not find root element to mount iGROWTHIC.");
+} else {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
 }
-
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
 // Register Service Worker for Offline support
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').then(registration => {
-      console.log('SW registered: ', registration);
+    // Using relative path for sw.js to handle various project root environments
+    navigator.serviceWorker.register('./sw.js').then(registration => {
+      console.log('iGROWTHIC Service Worker Ready');
     }).catch(registrationError => {
-      console.log('SW registration failed: ', registrationError);
+      // Fail silently to prevent app block
+      console.warn('SW registration bypassed');
     });
   });
 }

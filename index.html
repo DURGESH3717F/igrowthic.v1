@@ -77,6 +77,7 @@
 
   <!-- External Resources -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
@@ -169,12 +170,13 @@
       to { background-position: 200% center; }
     }
 
-    * {
+    /* Only hide cursor when app is ready - handled by CustomCursor component */
+    .hide-cursor * {
       cursor: none !important;
     }
 
     @media (max-width: 768px) {
-      * { cursor: auto !important; }
+      .hide-cursor * { cursor: auto !important; }
     }
 
     /* Prevent any horizontal pull/bounce on mobile */
@@ -197,7 +199,21 @@
 </script>
 </head>
 <body>
-  <div id="root"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <div id="root">
+    <!-- Fallback while mounting -->
+    <div style="height: 100vh; display: flex; align-items: center; justify-content: center; background: #E5E4E2; font-family: 'Outfit', sans-serif;">
+       <div style="text-align: center;">
+         <img src="https://i.ibb.co/n8gFP3d2/2.png" alt="iGROWTHIC" style="height: 80px; margin-bottom: 20px; animation: pulse 2s infinite;">
+         <p style="color: #6b7280; font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;">Initializing Growth Ecosystem...</p>
+       </div>
+    </div>
+  </div>
+  <style>
+    @keyframes pulse {
+      0% { opacity: 0.5; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0.5; transform: scale(0.98); }
+    }
+  </style>
 </body>
 </html>

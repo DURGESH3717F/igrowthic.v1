@@ -9,7 +9,11 @@ const CustomCursor: React.FC = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setHidden(false);
+      if (hidden) {
+        setHidden(false);
+        // Apply class to body to hide the real cursor only when custom one is ready
+        document.body.classList.add('hide-cursor');
+      }
       setDotPosition({ x: e.clientX, y: e.clientY });
       
       // Delay effect for the outer ring
@@ -39,8 +43,9 @@ const CustomCursor: React.FC = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
+      document.body.classList.remove('hide-cursor');
     };
-  }, []);
+  }, [hidden]);
 
   if (hidden) return null;
 
