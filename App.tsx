@@ -12,9 +12,15 @@ import StrategyModal from './components/StrategyModal.tsx';
 import Blog from './components/Blog.tsx';
 import Studio from './components/Studio.tsx';
 
+console.info("iGROWTHIC: Loading App Component...");
+
 const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [currentView, setCurrentView] = useState<'home' | 'blog' | 'studio'>('home');
+
+  useEffect(() => {
+    console.info("iGROWTHIC: App instance active. Current view:", currentView);
+  }, [currentView]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
