@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -87,6 +88,8 @@ const App: React.FC = () => {
       </footer>
 
       {showModal && currentView === 'home' && <StrategyModal onClose={() => setShowModal(false)} />}
+      
+      <SpeedInsights />
     </div>
   );
 };
