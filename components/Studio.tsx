@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Sparkles, Zap, ArrowRight, Video, Target, TrendingUp, BarChart } from 'lucide-react';
+import { GoogleGenAI, Type } from "@google/genai";
 
 const STUDIO_IDEAS: Record<string, any> = {
   Viral: [
@@ -26,17 +27,51 @@ const Studio: React.FC = () => {
   const [results, setResults] = useState<any[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const generateIdeas = (e: React.FormEvent) => {
+  // Use Gemini API to generate dynamic content roadmaps
+  const generateIdeas = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!niche) return;
     setIsGenerating(true);
     setResults([]);
     
-    // Simulate high-end 2026 AI compute
-    setTimeout(() => {
+    // Create Gemini instance right before the call
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
+    try {
+      const response = await ai.models.generateContent({
+        model: 'gemini-3-flash-preview',
+        contents: `Generate 3 specific content ideas for a business in the "${niche}" niche with the campaign goal of "${goal}".`,
+        config: {
+          systemInstruction: "You are the Lead Content Strategist at iGROWTHIC. You specialize in viral, high-retention content hooks and structures for 2026.",
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: Type.ARRAY,
+            items: {
+              type: Type.OBJECT,
+              properties: {
+                title: { type: Type.STRING, description: "Catchy title of the idea" },
+                hook: { type: Type.STRING, description: "A high-retention opening line or hook" },
+                type: { type: Type.STRING, description: "The content format (e.g., Cinematic Reel, B2B LinkedIn Post, Direct Response Ad)" }
+              },
+              required: ["title", "hook", "type"]
+            }
+          }
+        }
+      });
+
+      const jsonStr = response.text;
+      if (jsonStr) {
+        setResults(JSON.parse(jsonStr.trim()));
+      } else {
+        setResults(STUDIO_IDEAS[goal]);
+      }
+    } catch (error) {
+      console.error("iGROWTHIC Studio AI Engine Error:", error);
+      // Fallback to pre-defined ideas if API fails
       setResults(STUDIO_IDEAS[goal]);
+    } finally {
       setIsGenerating(false);
-    }, 2000);
+    }
   };
 
   return (

@@ -1,9 +1,7 @@
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
-
-console.info("iGROWTHIC: Mounting sequence initiated...");
+import App from './App';
 
 const rootElement = document.getElementById('root');
 
@@ -15,19 +13,15 @@ if (rootElement) {
         <App />
       </React.StrictMode>
     );
-    console.info("iGROWTHIC: Application successfully mounted to DOM.");
   } catch (error) {
-    console.error("iGROWTHIC: Mounting failed with error:", error);
-    throw error; // Let global handler catch it
+    console.error("iGROWTHIC: Mounting failed.", error);
   }
-} else {
-  console.error("iGROWTHIC: Root container '#root' was not found in the DOM.");
 }
 
-if ('serviceWorker' in navigator) {
+// Fix: Property 'env' does not exist on type 'ImportMeta'. 
+// Using (import.meta as any) to allow access to Vite environment variables without global type definitions.
+if ('serviceWorker' in navigator && (import.meta as any).env?.PROD) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then(() => console.info("iGROWTHIC: PWA Service Worker ready."))
-      .catch((err) => console.warn("iGROWTHIC: SW registration skipped.", err));
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
   });
 }

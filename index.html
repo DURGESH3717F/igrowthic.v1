@@ -9,19 +9,6 @@
   <meta name="description" content="iGROWTHIC is a premier digital marketing agency in Mumbai. We specialize in cinematic content strategy, AI-driven performance marketing, and high-retention video production.">
   <meta name="theme-color" content="#4a9eff">
 
-  <script type="importmap">
-  {
-    "imports": {
-      "react": "https://esm.sh/react@19.0.0",
-      "react/": "https://esm.sh/react@19.0.0/",
-      "react-dom": "https://esm.sh/react-dom@19.0.0",
-      "react-dom/": "https://esm.sh/react-dom@19.0.0/",
-      "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-      "lucide-react": "https://esm.sh/lucide-react@0.475.0?external=react"
-    }
-  }
-  </script>
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,18 +54,17 @@
   </style>
 
   <script>
-    // Global Error Handler to surface issues during load
     window.onerror = function(msg, url, line, col, error) {
-      console.error("Global Catch:", msg, url, line);
+      console.error("Critical Engine Error:", msg, url, line);
       var root = document.getElementById('root');
-      if (root) {
+      if (root && root.innerHTML.includes('Bootstrapping')) {
         root.innerHTML = `
           <div style="height: 100vh; display: flex; align-items: center; justify-content: center; background: #fff; font-family: sans-serif; text-align: center; padding: 20px;">
             <div style="max-width: 400px;">
-              <h1 style="color: #ef4444; margin-bottom: 10px;">Engine Failure</h1>
-              <p style="color: #6b7280; font-size: 14px; margin-bottom: 20px;">The Growth Ecosystem failed to initialize. This is often caused by a script timeout or module conflict.</p>
+              <h1 style="color: #ef4444; margin-bottom: 10px;">Deployment Issue</h1>
+              <p style="color: #6b7280; font-size: 14px; margin-bottom: 20px;">The production bundle failed to execute. This is typically due to a missing build step in your CI/CD settings.</p>
               <code style="display: block; background: #f3f4f6; padding: 10px; border-radius: 4px; font-size: 11px; margin-bottom: 20px; overflow-x: auto; text-align: left;">${msg}</code>
-              <button onclick="location.reload()" style="background: #4a9eff; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%;">Retry Bootstrap</button>
+              <button onclick="location.reload()" style="background: #4a9eff; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%;">Refresh Dashboard</button>
             </div>
           </div>
         `;
@@ -86,6 +72,19 @@
       return false;
     };
   </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "vite": "https://esm.sh/vite@^7.3.1"
+  }
+}
+</script>
 </head>
 <body>
   <div id="root">
@@ -96,6 +95,6 @@
        </div>
     </div>
   </div>
-  <script type="module" src="./index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>

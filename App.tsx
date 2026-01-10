@@ -1,26 +1,20 @@
 
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar.tsx';
-import Hero from './components/Hero.tsx';
-import Services from './components/Services.tsx';
-import PhysicsBrand from './components/PhysicsBrand.tsx';
-import About from './components/About.tsx';
-import Pricing from './components/Pricing.tsx';
-import Contact from './components/Contact.tsx';
-import CustomCursor from './components/CustomCursor.tsx';
-import StrategyModal from './components/StrategyModal.tsx';
-import Blog from './components/Blog.tsx';
-import Studio from './components/Studio.tsx';
-
-console.info("iGROWTHIC: Loading App Component...");
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import PhysicsBrand from './components/PhysicsBrand';
+import About from './components/About';
+import Pricing from './components/Pricing';
+import Contact from './components/Contact';
+import CustomCursor from './components/CustomCursor';
+import StrategyModal from './components/StrategyModal';
+import Blog from './components/Blog';
+import Studio from './components/Studio';
 
 const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [currentView, setCurrentView] = useState<'home' | 'blog' | 'studio'>('home');
-
-  useEffect(() => {
-    console.info("iGROWTHIC: App instance active. Current view:", currentView);
-  }, [currentView]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
