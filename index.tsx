@@ -15,14 +15,13 @@ if (!rootElement) {
   );
 }
 
-// Register Service Worker for Offline support
-if ('serviceWorker' in navigator) {
+// Register Service Worker for Offline support in production
+// Fix: Use type assertion to any for import.meta to bypass TypeScript error in environments without full Vite type definitions
+if ('serviceWorker' in navigator && (import.meta as any).env?.PROD) {
   window.addEventListener('load', () => {
-    // Using relative path for sw.js to handle various project root environments
-    navigator.serviceWorker.register('./sw.js').then(registration => {
+    navigator.serviceWorker.register('/sw.js').then(() => {
       console.log('iGROWTHIC Service Worker Ready');
-    }).catch(registrationError => {
-      // Fail silently to prevent app block
+    }).catch(() => {
       console.warn('SW registration bypassed');
     });
   });

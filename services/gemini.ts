@@ -1,7 +1,9 @@
 
+import { GoogleGenAI } from "@google/genai";
+
 /**
- * iGROWTHIC Local Strategy Engine
- * Deterministic local logic for offline performance.
+ * iGROWTHIC Strategy Engine
+ * Powered by Google Gemini for high-impact digital growth strategies.
  */
 
 const STRATEGY_DATABASE: Record<string, string[]> = {
@@ -27,9 +29,32 @@ const STRATEGY_DATABASE: Record<string, string[]> = {
   ]
 };
 
+// Fix: Replaced mock logic with official @google/genai SDK implementation
 export const getMarketingStrategy = async (businessInfo: string): Promise<string> => {
-  // Simulate network delay for "processing" feel
-  await new Promise(resolve => setTimeout(resolve, 1200));
+  try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const response = await ai.models.generateContent({
+      model: 'gemini-3-flash-preview',
+      contents: `Business Sector/Info: ${businessInfo}. 
+      Location: Mumbai, India.
+      Goal: Digital growth and viral branding.
+      
+      Generate exactly 3 actionable marketing strategy pillars. 
+      Return each pillar on a new line without bullets, numbering, or prefixes.`,
+      config: {
+        systemInstruction: "You are the Lead Growth Strategist at iGROWTHIC, Mumbai's premier digital agency. You specialize in viral cinematic content and data-driven performance marketing. Your advice is concise and high-impact.",
+        temperature: 0.8,
+      }
+    });
+
+    const text = response.text;
+    if (text && text.trim().length > 0) {
+      return text.trim();
+    }
+  } catch (error) {
+    console.error("Gemini API Error in getMarketingStrategy:", error);
+    // Fallback to deterministic local logic if API is unavailable or fails
+  }
 
   const query = businessInfo.toLowerCase().trim();
   
@@ -43,6 +68,5 @@ export const getMarketingStrategy = async (businessInfo: string): Promise<string
     return STRATEGY_DATABASE.lifestyle.join('\n');
   }
 
-  // Fallback to general advice if no keywords match
   return STRATEGY_DATABASE.general.join('\n');
 };
