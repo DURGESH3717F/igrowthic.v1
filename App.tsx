@@ -1,16 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import PhysicsBrand from './components/PhysicsBrand';
-import About from './components/About';
-import Pricing from './components/Pricing';
-import Contact from './components/Contact';
-import CustomCursor from './components/CustomCursor';
-import StrategyModal from './components/StrategyModal';
-import Blog from './components/Blog';
-import Studio from './components/Studio';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
+import Services from './components/Services.tsx';
+import PhysicsBrand from './components/PhysicsBrand.tsx';
+import About from './components/About.tsx';
+import Pricing from './components/Pricing.tsx';
+import Contact from './components/Contact.tsx';
+import CustomCursor from './components/CustomCursor.tsx';
+import StrategyModal from './components/StrategyModal.tsx';
+import Blog from './components/Blog.tsx';
+import Studio from './components/Studio.tsx';
 
 const App: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +31,6 @@ const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen">
-      {/* Background Blurs */}
       <div className="fixed top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-400/5 rounded-full custom-blur animate-floating pointer-events-none -z-10" aria-hidden="true" />
       <div className="fixed bottom-[-10%] right-[-10%] w-[70vw] h-[70vw] bg-blue-600/5 rounded-full custom-blur animate-floating-reverse pointer-events-none -z-10" aria-hidden="true" />
 
@@ -69,16 +68,16 @@ const App: React.FC = () => {
           <div className="flex flex-col items-center md:items-start gap-4">
             <img 
               src="https://i.ibb.co/n8gFP3d2/2.png" 
-              alt="iGROWTHIC - Premier Digital Marketing Agency" 
+              alt="iGROWTHIC" 
               className="h-16 w-auto object-contain"
               loading="lazy" 
             />
             <p className="text-gray-500 font-medium">Digital Excellence & Viral Branding Specialists.</p>
           </div>
-          <nav className="flex gap-8 font-semibold text-gray-700" aria-label="Social Media">
-            <a href="https://twitter.com/igrowthic" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">Twitter</a>
-            <a href="https://instagram.com/igrowthic" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">Instagram</a>
-            <a href="https://linkedin.com/company/igrowthic" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">LinkedIn</a>
+          <nav className="flex gap-8 font-semibold text-gray-700">
+            <a href="https://twitter.com/igrowthic" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://instagram.com/igrowthic" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://linkedin.com/company/igrowthic" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </nav>
         </div>
         <div className="text-center mt-12 text-sm text-gray-400 uppercase tracking-widest font-black">
