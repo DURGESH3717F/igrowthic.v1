@@ -30,51 +30,6 @@
   <meta property="twitter:description" content="Elevate your brand with data-driven content strategy and high-retention video production.">
   <meta property="twitter:image" content="https://igrowthic.com/og-image.jpg">
 
-  <!-- Structured Data: Organization & Professional Service -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "iGROWTHIC",
-      "image": "https://igrowthic.com/og-image.jpg",
-      "@id": "https://igrowthic.com",
-      "url": "https://igrowthic.com",
-      "telephone": "+919892299010",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Mumbai Corporate Park",
-        "addressLocality": "Mumbai",
-        "addressRegion": "MH",
-        "postalCode": "400001",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 19.0760,
-        "longitude": 72.8777
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
-        "opens": "09:00",
-        "closes": "21:00"
-      },
-      "sameAs": [
-        "https://twitter.com/igrowthic",
-        "https://www.instagram.com/igrowthic",
-        "https://www.linkedin.com/company/igrowthic"
-      ],
-      "priceRange": "â¹â¹â¹"
-    }
-  </script>
-
   <!-- External Resources -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
@@ -92,7 +47,6 @@
       --secondary-color: #0066ff;
     }
 
-    /* Absolute scrollbar removal */
     * {
       scrollbar-width: none !important; 
       -ms-overflow-style: none !important;
@@ -170,7 +124,6 @@
       to { background-position: 200% center; }
     }
 
-    /* Only hide cursor when app is ready - handled by CustomCursor component */
     .hide-cursor * {
       cursor: none !important;
     }
@@ -179,16 +132,25 @@
       .hide-cursor * { cursor: auto !important; }
     }
 
-    /* Prevent any horizontal pull/bounce on mobile */
     body {
       overscroll-behavior-x: none;
     }
   </style>
 
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.475.0"
+  }
+}
+</script>
 </head>
 <body>
   <div id="root">
-    <!-- Fallback while mounting -->
     <div style="height: 100vh; display: flex; align-items: center; justify-content: center; background: #E5E4E2; font-family: 'Outfit', sans-serif;">
        <div style="text-align: center;">
          <img src="https://i.ibb.co/n8gFP3d2/2.png" alt="iGROWTHIC" style="height: 80px; margin-bottom: 20px; animation: pulse 2s infinite;">
@@ -203,6 +165,6 @@
       100% { opacity: 0.5; transform: scale(0.98); }
     }
   </style>
-  <script type="module" src="/index.tsx"></script>
+  <script type="module" src="index.tsx"></script>
 </body>
 </html>
