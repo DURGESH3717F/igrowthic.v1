@@ -31,6 +31,7 @@ const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen">
+      {/* Background Blurs */}
       <div className="fixed top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-blue-400/5 rounded-full custom-blur animate-floating pointer-events-none -z-10" aria-hidden="true" />
       <div className="fixed bottom-[-10%] right-[-10%] w-[70vw] h-[70vw] bg-blue-600/5 rounded-full custom-blur animate-floating-reverse pointer-events-none -z-10" aria-hidden="true" />
 
@@ -68,16 +69,16 @@ const App: React.FC = () => {
           <div className="flex flex-col items-center md:items-start gap-4">
             <img 
               src="https://i.ibb.co/n8gFP3d2/2.png" 
-              alt="iGROWTHIC" 
+              alt="iGROWTHIC - Premier Digital Marketing Agency" 
               className="h-16 w-auto object-contain"
               loading="lazy" 
             />
             <p className="text-gray-500 font-medium">Digital Excellence & Viral Branding Specialists.</p>
           </div>
-          <nav className="flex gap-8 font-semibold text-gray-700">
-            <a href="https://twitter.com/igrowthic" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="https://instagram.com/igrowthic" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://linkedin.com/company/igrowthic" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <nav className="flex gap-8 font-semibold text-gray-700" aria-label="Social Media">
+            <a href="https://twitter.com/igrowthic" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">Twitter</a>
+            <a href="https://instagram.com/igrowthic" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">Instagram</a>
+            <a href="https://linkedin.com/company/igrowthic" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">LinkedIn</a>
           </nav>
         </div>
         <div className="text-center mt-12 text-sm text-gray-400 uppercase tracking-widest font-black">

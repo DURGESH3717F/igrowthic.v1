@@ -5,10 +5,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
+  <!-- SEO & Brand Dominance -->
   <title>iGROWTHIC | #1 Digital Growth Agency & Content Strategy Specialists 2026</title>
-  <meta name="description" content="iGROWTHIC is a premier digital marketing agency in Mumbai. We specialize in cinematic content strategy, AI-driven performance marketing, and high-retention video production.">
+  <meta name="title" content="iGROWTHIC | #1 Digital Growth Agency & Content Strategy Specialists 2026">
+  <meta name="description" content="iGROWTHIC is a premier digital marketing agency in Mumbai. We specialize in cinematic content strategy, AI-driven performance marketing, and high-retention video production to scale brands globally.">
+  <meta name="keywords" content="digital marketing agency Mumbai, content strategy specialists, cinematic video production, short form video marketing, brand scaling agency, iGROWTHIC, performance marketing India, SEO experts 2026, social media growth, influencer marketing agency">
+  <meta name="author" content="iGROWTHIC">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://igrowthic.com">
   <meta name="theme-color" content="#4a9eff">
 
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://igrowthic.com/">
+  <meta property="og:title" content="iGROWTHIC | Scale Your Brand with Cinematic Strategy">
+  <meta property="og:description" content="Stop scrolling, start scaling. iGROWTHIC delivers 2026-ready content strategies that convert attention into revenue.">
+  <meta property="og:image" content="https://igrowthic.com/og-image.jpg">
+  <meta property="og:site_name" content="iGROWTHIC">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://igrowthic.com/">
+  <meta property="twitter:title" content="iGROWTHIC | Digital Growth Experts">
+  <meta property="twitter:description" content="Elevate your brand with data-driven content strategy and high-retention video production.">
+  <meta property="twitter:image" content="https://igrowthic.com/og-image.jpg">
+
+  <!-- Structured Data: Organization & Professional Service -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "iGROWTHIC",
+      "image": "https://igrowthic.com/og-image.jpg",
+      "@id": "https://igrowthic.com",
+      "url": "https://igrowthic.com",
+      "telephone": "+919892299010",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Mumbai Corporate Park",
+        "addressLocality": "Mumbai",
+        "addressRegion": "MH",
+        "postalCode": "400001",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 19.0760,
+        "longitude": 72.8777
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "21:00"
+      },
+      "sameAs": [
+        "https://twitter.com/igrowthic",
+        "https://www.instagram.com/igrowthic",
+        "https://www.linkedin.com/company/igrowthic"
+      ],
+      "priceRange": "₹₹₹"
+    }
+  </script>
+
+  <!-- External Resources -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,11 +85,25 @@
   <style>
     :root {
       --bg-color: #E0E0E0;
+      --bg-secondary: #d8d7d5;
       --text-color: #2c3038;
+      --text-muted: #6b7280;
       --primary-color: #4a9eff;
+      --secondary-color: #0066ff;
     }
-    * { scrollbar-width: none !important; -ms-overflow-style: none !important; }
-    *::-webkit-scrollbar { display: none !important; }
+
+    /* Absolute scrollbar removal */
+    * {
+      scrollbar-width: none !important; 
+      -ms-overflow-style: none !important;
+    }
+    
+    *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+
     html, body {
       width: 100%;
       max-width: 100vw;
@@ -30,71 +111,109 @@
       background-color: #E5E4E2;
       color: var(--text-color);
       font-family: 'Inter', sans-serif;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
+      position: relative;
     }
-    h1, h2, h3, .font-heading { font-family: 'Outfit', sans-serif; }
-    .custom-blur { filter: blur(120px); }
+
+    h1, h2, h3, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .custom-blur {
+      filter: blur(120px);
+    }
+
+    @keyframes floating {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(40px, 60px) rotate(5deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    .animate-floating {
+      animation: floating 25s infinite ease-in-out;
+    }
+
+    .animate-floating-reverse {
+      animation: floating 30s infinite reverse ease-in-out;
+    }
+
     .glass {
       background: rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
     }
+
+    .glass-card {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
     .text-gradient {
-      background: linear-gradient(135deg, #4a9eff, #0066ff);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hide-cursor * { cursor: none !important; }
-    @media (max-width: 768px) { .hide-cursor * { cursor: auto !important; } }
-    @keyframes pulse {
-      0% { opacity: 0.5; transform: scale(0.98); }
-      50% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0.5; transform: scale(0.98); }
+
+    .gold-text {
+      background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+    }
+
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+
+    /* Only hide cursor when app is ready - handled by CustomCursor component */
+    .hide-cursor * {
+      cursor: none !important;
+    }
+
+    @media (max-width: 768px) {
+      .hide-cursor * { cursor: auto !important; }
+    }
+
+    /* Prevent any horizontal pull/bounce on mobile */
+    body {
+      overscroll-behavior-x: none;
     }
   </style>
 
-  <script>
-    window.onerror = function(msg, url, line, col, error) {
-      console.error("Critical Engine Error:", msg, url, line);
-      var root = document.getElementById('root');
-      if (root && root.innerHTML.includes('Bootstrapping')) {
-        root.innerHTML = `
-          <div style="height: 100vh; display: flex; align-items: center; justify-content: center; background: #fff; font-family: sans-serif; text-align: center; padding: 20px;">
-            <div style="max-width: 400px;">
-              <h1 style="color: #ef4444; margin-bottom: 10px;">Deployment Issue</h1>
-              <p style="color: #6b7280; font-size: 14px; margin-bottom: 20px;">The production bundle failed to execute. This is typically due to a missing build step in your CI/CD settings.</p>
-              <code style="display: block; background: #f3f4f6; padding: 10px; border-radius: 4px; font-size: 11px; margin-bottom: 20px; overflow-x: auto; text-align: left;">${msg}</code>
-              <button onclick="location.reload()" style="background: #4a9eff; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%;">Refresh Dashboard</button>
-            </div>
-          </div>
-        `;
-      }
-      return false;
-    };
-  </script>
 <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "vite": "https://esm.sh/vite@^7.3.1"
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.475.0"
   }
 }
 </script>
 </head>
 <body>
   <div id="root">
+    <!-- Fallback while mounting -->
     <div style="height: 100vh; display: flex; align-items: center; justify-content: center; background: #E5E4E2; font-family: 'Outfit', sans-serif;">
        <div style="text-align: center;">
          <img src="https://i.ibb.co/n8gFP3d2/2.png" alt="iGROWTHIC" style="height: 80px; margin-bottom: 20px; animation: pulse 2s infinite;">
-         <p style="color: #6b7280; font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;">Bootstrapping Growth Ecosystem...</p>
+         <p style="color: #6b7280; font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;">Initializing Growth Ecosystem...</p>
        </div>
     </div>
   </div>
-  <script type="module" src="/index.tsx"></script>
+  <style>
+    @keyframes pulse {
+      0% { opacity: 0.5; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0.5; transform: scale(0.98); }
+    }
+  </style>
 </body>
 </html>

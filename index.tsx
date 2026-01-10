@@ -1,27 +1,29 @@
 
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 
 const rootElement = document.getElementById('root');
-
-if (rootElement) {
-  try {
-    const root = createRoot(rootElement);
-    root.render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    );
-  } catch (error) {
-    console.error("iGROWTHIC: Mounting failed.", error);
-  }
+if (!rootElement) {
+  console.error("Critical: Could not find root element to mount iGROWTHIC.");
+} else {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
 }
 
-// Fix: Property 'env' does not exist on type 'ImportMeta'. 
-// Using (import.meta as any) to allow access to Vite environment variables without global type definitions.
-if ('serviceWorker' in navigator && (import.meta as any).env?.PROD) {
+// Register Service Worker for Offline support
+if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
+    // Using relative path for sw.js to handle various project root environments
+    navigator.serviceWorker.register('./sw.js').then(registration => {
+      console.log('iGROWTHIC Service Worker Ready');
+    }).catch(registrationError => {
+      // Fail silently to prevent app block
+      console.warn('SW registration bypassed');
+    });
   });
 }
