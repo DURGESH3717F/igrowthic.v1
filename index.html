@@ -21,12 +21,6 @@
   <meta property="og:image" content="https://igrowthic.com/og-image.jpg">
   <meta property="og:site_name" content="iGROWTHIC">
 
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://igrowthic.com/">
-  <meta property="twitter:title" content="iGROWTHIC | Digital Growth Experts">
-  <meta property="twitter:description" content="Elevate your brand with data-driven content strategy and high-retention video production.">
-  <meta property="twitter:image" content="https://igrowthic.com/og-image.jpg">
-
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -127,16 +121,6 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .gold-text {
-      background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shine 3s linear infinite;
-    }
-
-    @keyframes shine { to { background-position: 200% center; } }
-
     .hide-cursor * { cursor: none !important; }
 
     @media (max-width: 768px) {
@@ -144,6 +128,12 @@
     }
 
     body { overscroll-behavior-x: none; }
+
+    @keyframes pulse {
+      0% { opacity: 0.5; transform: scale(0.98); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0.5; transform: scale(0.98); }
+    }
   </style>
 
 <script type="importmap">
@@ -160,8 +150,17 @@
 </script>
 </head>
 <body>
-  <div id="root"></div>
-  <!-- Explicitly import the entry point index.tsx -->
+  <div id="root">
+    <!-- Initial Loading State -->
+    <div style="height: 100vh; display: flex; align-items: center; justify-content: center; background: #E5E4E2; font-family: 'Outfit', sans-serif;">
+       <div style="text-align: center;">
+         <img src="https://i.ibb.co/n8gFP3d2/2.png" alt="iGROWTHIC" style="height: 80px; margin-bottom: 20px; animation: pulse 2s infinite;">
+         <p style="color: #6b7280; font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;">Initializing Growth Ecosystem...</p>
+       </div>
+    </div>
+  </div>
+  
+  <!-- App Entry Point -->
   <script type="module" src="./index.tsx"></script>
 </body>
 </html>
