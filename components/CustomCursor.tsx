@@ -1,25 +1,25 @@
-
 import React, { useState, useEffect } from 'react';
 
 const CustomCursor: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dotPosition, setDotPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (hidden) {
         setHidden(false);
-        // Apply class to body to hide the real cursor only when custom one is ready
         document.body.classList.add('hide-cursor');
       }
-      setDotPosition({ x: e.clientX, y: e.clientY });
       
-      // Delay effect for the outer ring
-      setTimeout(() => {
-        setPosition({ x: e.clientX, y: e.clientY });
-      }, 50);
+      requestAnimationFrame(() => {
+        setDotPosition({ x: e.clientX, y: e.clientY });
+        setTimeout(() => {
+          setPosition({ x: e.clientX, y: e.clientY });
+        }, 35);
+      });
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -29,7 +29,8 @@ const CustomCursor: React.FC = () => {
         target.tagName === 'BUTTON' || 
         target.closest('a') || 
         target.closest('button') ||
-        target.classList.contains('toggle-option')
+        target.classList.contains('cursor-pointer') ||
+        target.closest('.cursor-none')
       ) {
         setIsHovering(true);
       } else {
@@ -37,12 +38,19 @@ const CustomCursor: React.FC = () => {
       }
     };
 
+    const handleMouseDown = () => setIsClicked(true);
+    const handleMouseUp = () => setIsClicked(false);
+
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
       document.body.classList.remove('hide-cursor');
     };
   }, [hidden]);
@@ -53,22 +61,26 @@ const CustomCursor: React.FC = () => {
     <>
       {/* Outer Ring */}
       <div 
-        className="fixed w-10 h-10 border border-blue-400 rounded-full pointer-events-none z-[9999] transition-transform duration-300 hidden md:block"
+        className="fixed w-12 h-12 border-2 border-blue-500 rounded-full pointer-events-none z-[9999] transition-transform hidden md:block"
         style={{
           left: position.x,
           top: position.y,
-          transform: `translate(-50%, -50%) scale(${isHovering ? 1.5 : 1})`,
-          backgroundColor: isHovering ? 'rgba(74, 158, 255, 0.1)' : 'transparent',
-          mixBlendMode: 'difference'
+          transform: `translate(-50%, -50%) scale(${isClicked ? 0.7 : isHovering ? 1.6 : 1})`,
+          backgroundColor: isHovering ? 'rgba(74, 158, 255, 0.15)' : 'transparent',
+          boxShadow: isHovering ? '0 0 30px rgba(74, 158, 255, 0.3)' : 'none',
+          transition: 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.4s ease, box-shadow 0.4s ease',
+          opacity: 0.8
         }}
       />
       {/* Center Dot */}
       <div 
-        className="fixed w-2 h-2 bg-blue-400 rounded-full pointer-events-none z-[9999] hidden md:block"
+        className="fixed w-2.5 h-2.5 bg-blue-500 rounded-full pointer-events-none z-[9999] hidden md:block"
         style={{
           left: dotPosition.x,
           top: dotPosition.y,
-          transform: 'translate(-50%, -50%)'
+          transform: `translate(-50%, -50%) scale(${isClicked ? 0.5 : 1})`,
+          boxShadow: '0 0 10px rgba(74, 158, 255, 0.5)',
+          transition: 'transform 0.1s ease-out'
         }}
       />
     </>
