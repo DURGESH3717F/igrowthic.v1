@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
-  <!-- SEO & Brand Dominance -->
   <title>iGROWTHIC | #1 Digital Growth Agency & Content Strategy Specialists 2026</title>
   <meta name="title" content="iGROWTHIC | #1 Digital Growth Agency & Content Strategy Specialists 2026">
   <meta name="description" content="iGROWTHIC is a premier digital marketing agency in Mumbai. We specialize in cinematic content strategy, AI-driven performance marketing, and high-retention video production to scale brands globally.">
@@ -15,7 +14,6 @@
   <link rel="canonical" href="https://igrowthic.com">
   <meta name="theme-color" content="#4a9eff">
 
-  <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://igrowthic.com/">
   <meta property="og:title" content="iGROWTHIC | Scale Your Brand with Cinematic Strategy">
@@ -23,14 +21,12 @@
   <meta property="og:image" content="https://igrowthic.com/og-image.jpg">
   <meta property="og:site_name" content="iGROWTHIC">
 
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://igrowthic.com/">
   <meta property="twitter:title" content="iGROWTHIC | Digital Growth Experts">
   <meta property="twitter:description" content="Elevate your brand with data-driven content strategy and high-retention video production.">
   <meta property="twitter:image" content="https://igrowthic.com/og-image.jpg">
 
-  <!-- Structured Data: Organization & Professional Service -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -53,29 +49,10 @@
         "latitude": 19.0760,
         "longitude": 72.8777
       },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
-        "opens": "09:00",
-        "closes": "21:00"
-      },
-      "sameAs": [
-        "https://twitter.com/igrowthic",
-        "https://www.instagram.com/igrowthic",
-        "https://www.linkedin.com/company/igrowthic"
-      ],
       "priceRange": "₹₹₹"
     }
   </script>
 
-  <!-- External Resources -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,7 +69,6 @@
       --secondary-color: #0066ff;
     }
 
-    /* Absolute scrollbar removal */
     * {
       scrollbar-width: none !important; 
       -ms-overflow-style: none !important;
@@ -120,9 +96,7 @@
       font-family: 'Outfit', sans-serif;
     }
 
-    .custom-blur {
-      filter: blur(120px);
-    }
+    .custom-blur { filter: blur(120px); }
 
     @keyframes floating {
       0% { transform: translate(0, 0) rotate(0deg); }
@@ -130,13 +104,8 @@
       100% { transform: translate(0, 0) rotate(0deg); }
     }
 
-    .animate-floating {
-      animation: floating 25s infinite ease-in-out;
-    }
-
-    .animate-floating-reverse {
-      animation: floating 30s infinite reverse ease-in-out;
-    }
+    .animate-floating { animation: floating 25s infinite ease-in-out; }
+    .animate-floating-reverse { animation: floating 30s infinite reverse ease-in-out; }
 
     .glass {
       background: rgba(255, 255, 255, 0.25);
@@ -166,54 +135,31 @@
       animation: shine 3s linear infinite;
     }
 
-    @keyframes shine {
-      to { background-position: 200% center; }
-    }
+    @keyframes shine { to { background-position: 200% center; } }
 
-    /* Only hide cursor when app is ready - handled by CustomCursor component */
-    .hide-cursor * {
-      cursor: none !important;
-    }
+    .hide-cursor * { cursor: none !important; }
 
     @media (max-width: 768px) {
       .hide-cursor * { cursor: auto !important; }
     }
 
-    /* Prevent any horizontal pull/bounce on mobile */
-    body {
-      overscroll-behavior-x: none;
-    }
+    body { overscroll-behavior-x: none; }
   </style>
 
 <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.475.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react-dom": "https://esm.sh/react-dom@^19.2.3",
-    "lucide-react": "https://esm.sh/lucide-react@^0.475.0"
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
 </head>
 <body>
-  <div id="root">
-    <!-- Fallback while mounting -->
-    <div style="height: 100vh; display: flex; align-items: center; justify-content: center; background: #E5E4E2; font-family: 'Outfit', sans-serif;">
-       <div style="text-align: center;">
-         <img src="https://i.ibb.co/n8gFP3d2/2.png" alt="iGROWTHIC" style="height: 80px; margin-bottom: 20px; animation: pulse 2s infinite;">
-         <p style="color: #6b7280; font-weight: 700; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;">Initializing Growth Ecosystem...</p>
-       </div>
-    </div>
-  </div>
-  <style>
-    @keyframes pulse {
-      0% { opacity: 0.5; transform: scale(0.98); }
-      50% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0.5; transform: scale(0.98); }
-    }
-  </style>
+  <div id="root"></div>
 </body>
 </html>
